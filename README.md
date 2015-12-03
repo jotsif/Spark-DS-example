@@ -7,7 +7,8 @@ The example is an attempt to do unsupervised graph clustering of Västtrafik sto
 
 # Running
 
-1) Download apache spark binary suitable for your OS, and R if not installed either.
+1) Download apache spark binary suitable for your OS, and R if not installed either. 
+```brew install apache-spark``` for Mac OS X for example.
 
 2) Run the following code to execute the spark python script from a terminal:
 ```spark-submit --driver-memory=6G py/readPdfs.py```
