@@ -9,7 +9,18 @@ The example is an attempt to do unsupervised graph clustering of Västtrafik sto
 
 1) Download apache spark binary suitable for your OS, and R if not installed either. 
 
-```brew install apache-spark``` for Mac OS X for example.
+Mac OS X example: 
+
+```brew install apache-spark``` 
+
+```brew tap homebrew/science```
+
+```brew install gcc```
+
+```brew install Caskroom/cask/xquartz```
+
+```brew install r```
+
 
 2) Install the required python packaged:
 
