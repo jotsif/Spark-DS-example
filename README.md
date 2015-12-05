@@ -23,7 +23,11 @@ The code automatically extracts the timetable files so no need to do it manually
 
 This might take a while, since it parses more than 5k files, parses them and trains a model. 
 
-4) Visualise the result and compare PIC with Louvain graph clustering done in R.
+4) Install R libraries 
+
+```R -f R/install_libs.R```
+
+5) Visualise the result and compare PIC with Louvain graph clustering done in R.
 
 ```R -f R/plotgraph.R```
 
