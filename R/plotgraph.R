@@ -23,10 +23,10 @@ dev.off()
 
 
 ### Louvain clustering of graph
-fgreedy<-cluster_louvain(g)
-colbar <- rainbow(length(communities(fgreedy)))
+r.result <-cluster_louvain(g)
+colbar <- rainbow(length(communities(r.result)))
 
 
 pdf("plots/graph_louvain.pdf", width = 20, height = 20)
-plot(g, vertex.size = 0.3, vertex.label.cex=0.3, edge.width=get.edge.attribute(g)$V5, vertex.color = colbar[membership(fgreedy)], layout = layout_nicely(g))
+plot(g, vertex.size = 0.3, vertex.label.cex=0.3, edge.width=get.edge.attribute(g)$V5, vertex.color = colbar[membership(fgreedy)], layout = layout_with_gem(g))
 dev.off()

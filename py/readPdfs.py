@@ -7,7 +7,9 @@
 ### It then trains a power iteration clustering algorithm on the graph
 ### and writes the results to csv
 
+import sys
 from pyspark import SparkContext
+from pyspark import SparkConf
 from os import listdir
 import re
 import requests
@@ -15,12 +17,25 @@ import codecs
 import tarfile
 from pyspark.mllib.clustering import *
 
+if len(sys.argv) <= 1:
+    master = 'local'
+else:
+    master = sys.argv[1]
+
 ###
 ### Start up a Spark Context - taking care of everything clustery
 ###
 ### To be able to run code on local machine, we however make it local
 ###
-sc = SparkContext("local", "Vasttrafik stop clustering")
+conf = SparkConf()
+conf.set("spark.eventLog.enabled", True)
+conf.setMaster(master)
+conf.setAppName("Vasttrafik stop clustering")
+conf.set("spark.eventLog.dir", "tmp/")
+conf.set("spark.executor.memory", "10g")
+
+
+sc = SparkContext(conf = conf)
 
 ### Read up all stops from converted pdf-files
 
@@ -71,7 +86,8 @@ stops_to_index = sc.broadcast(dict((x, y) for x, y in unique_stops))
 stops_from_index = sc.broadcast(dict((y, x) for x, y in unique_stops))
 
 ### Now we are ready to calculate affinity matrix!
-
+### Use 1/time**2 as distance function
+### Since affinity matrix is symmetric we filter out lower triangular part.
 affinity_matrix = timetable_reduction.map(lambda x: [stops_to_index.value[x[0][0]], stops_to_index.value[x[0][1]], 1.0/pow(x[1][0], 2)]).filter(lambda x: x[0] < x[1]).cache()
 
 ### Train PIC
