@@ -8,16 +8,37 @@ The example is an attempt to do unsupervised graph clustering of Västtrafik sto
 # Running
 
 1) Download apache spark binary suitable for your OS, and R if not installed either. 
-```brew install apache-spark``` for Mac OS X for example.
 
-2) Run the following code to execute the spark python script from a terminal:
+Mac OS X example: 
+
+```brew install apache-spark``` 
+
+```brew tap homebrew/science```
+
+```brew install gcc```
+
+```brew install Caskroom/cask/xquartz```
+
+```brew install r```
+
+
+2) Install the required python packaged:
+
+```pip install -r requirements.txt```
+
+3) Run the following code to execute the spark python script from a terminal:
+
 ```spark-submit --driver-memory=6G py/readPdfs.py```
 
 The code automatically extracts the timetable files so no need to do it manually.
 
 This might take a while, since it parses more than 5k files, parses them and trains a model. 
 
-3) Visualise the result and compare PIC with Louvain graph clustering done in R.
+4) Install R libraries 
+
+```R -f R/install_libs.R```
+
+5) Visualise the result and compare PIC with Louvain graph clustering done in R.
 
 ```R -f R/plotgraph.R```
 
