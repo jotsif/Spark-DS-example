@@ -1,5 +1,5 @@
 # Spark-DS-example
-Illustration of how to use Apache Spark to analyse raw data, for MLSD meetup GBG 2015
+Illustration of how to use Apache Spark to analyse raw data, for MLDS meetup GBG 2015
 
 The example is an attempt to do unsupervised graph clustering of Västtrafik stops using timetable pdfs converted to txt files (stored in timetables.tar.gz). The model is a power iteration graph clustering algorithm. 
 
