@@ -36,7 +36,7 @@ This might take a while, since it parses more than 5k files, parses them and tra
 
 3b)
 
-Download spark binary from spark.apache.org and unpack
+Download spark binary from spark.apache.org (http://apache.mirrors.spacedump.net/spark/spark-1.5.2/spark-1.5.2-bin-hadoop2.6.tgz) and unpack
 
 ```
 
