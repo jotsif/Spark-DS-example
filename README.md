@@ -43,9 +43,11 @@ Download spark binary from spark.apache.org (http://apache.mirrors.spacedump.net
 ./sbin/start-master.sh
 ./sbin/start-slave.sh spark://yourhostname:7077
 
-spark-submit --driver-memory=6G py/readPdfs.py
+spark-submit --driver-memory=6G py/readPdfs.py spark://yourhostname:7077
 
 ```
+
+This way you can access webui from `yourhostname:8080` and watch progress of the app.
 
 
 
